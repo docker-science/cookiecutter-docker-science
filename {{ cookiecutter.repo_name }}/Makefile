@@ -14,7 +14,7 @@ for line in sys.stdin:
 endef
 
 define START_DOCKER_CONTAINER
-if [ `docker inspect -f .State.Running $(CONTAINER_NAME)` = "false" ] ; then
+if [ `docker inspect -f {% raw -%}{{.State.Running}}{%- endraw %} $(CONTAINER_NAME)` = "false" ] ; then
         docker start $(CONTAINER_NAME)
 fi
 endef
