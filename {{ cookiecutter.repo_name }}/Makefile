@@ -35,43 +35,43 @@ export LANG=C.UTF-8
 # TARGETS
 
 help:
-        @python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 init: init-docker init-data ## initialize repository for traning
 
 init-data: ## download data
-        aws s3 sync $(DATA) ./data/
+	aws s3 sync $(DATA) ./data/
 
 init-docker: ## initialize docker image
-        docker build -t $(CONTAINER_NAME) -f ./docker/Dockerfile.gpu .
+	docker build -t $(CONTAINER_NAME) -f ./docker/Dockerfile.gpu .
 
 create-container: ## create docker container
-        nvidia-docker run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(CONTAINER_NAME)
+	nvidia-docker run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(CONTAINER_NAME)
 
 start-container: ## start docker instance
-        @echo "$$START_DOCKER_CONTAINER" | $(SHELL)
-        @echo "Launched $(CONTAINER_NAME)..."
+	@echo "$$START_DOCKER_CONTAINER" | $(SHELL)
+	@echo "Launched $(CONTAINER_NAME)..."
 
 jupyter: ## start Jupyter Notebook server
-        jupyter-notebook --ip=0.0.0.0 --config=$(JUPYTER_CONFIG_PATH)
+	jupyter-notebook --ip=0.0.0.0 --config=$(JUPYTER_CONFIG_PATH)
 
 clean: clean-model clean-pyc  ## remove all artifacts
 
 clean-model: ## remove model artifacts
-        rm -fr model/*
+	rm -fr model/*
 
 clean-pyc: ## remove Python file artifacts
-        find . -name '*.pyc' -exec rm -f {} +
-        find . -name '*.pyo' -exec rm -f {} +
-        find . -name '*~' -exec rm -f {} +
-        find . -name '__pycache__' -exec rm -fr {} +
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	find . -name '*~' -exec rm -f {} +
+	find . -name '__pycache__' -exec rm -fr {} +
 
 distclean: clean clean-data clean-docker ## remove all the reproducible resources including Docker images
 
 clean-data:
-        rm -fr data/*
+	rm -fr data/*
 
 clean-docker:
-        docker image rm $(CONTAINER_NAME)
-        docker rm $(CONTAINER_NAME)
+	docker image rm $(CONTAINER_NAME)
+	docker rm $(CONTAINER_NAME)
 
