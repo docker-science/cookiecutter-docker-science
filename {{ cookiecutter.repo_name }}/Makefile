@@ -26,11 +26,9 @@ export START_DOCKER_CONTAINER
 export PYTHONPATH=$PYTHONPATH:$(PWD)
 export CONTAINER_NAME= {{ cookiecutter.repo_name }}
 export DATA={{ cookiecutter.data_source }}
-export JUPYTER_HOST_PORT=8888
+export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
 export JUPYTER_CONFIG_PATH=config/jupyter_config.py
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
 
 # TARGETS
 
@@ -72,6 +70,5 @@ clean-data:
 	rm -fr data/*
 
 clean-docker:
-	docker image rm $(CONTAINER_NAME)
-	docker rm $(CONTAINER_NAME)
-
+	-docker rm $(CONTAINER_NAME)
+	-docker image rm $(CONTAINER_NAME)
