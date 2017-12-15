@@ -51,7 +51,7 @@ start-container: ## start docker instance
 	@echo "Launched $(CONTAINER_NAME)..."
 
 jupyter: ## start Jupyter Notebook server
-	jupyter-notebook --ip=0.0.0.0 --config=$(JUPYTER_CONFIG_PATH)
+	jupyter-notebook --ip=0.0.0.0 --port=${JUPYTER_CONTAINER_PORT} --config=$(JUPYTER_CONFIG_PATH)
 
 clean: clean-model clean-pyc  ## remove all artifacts
 
