@@ -41,7 +41,7 @@ init-data: ## download data
 	aws s3 sync $(DATA) ./data/
 
 init-docker: ## initialize docker image
-	docker build -t $(CONTAINER_NAME) -f ./docker/Dockerfile.gpu .
+	docker build -t $(CONTAINER_NAME) -f ./docker/Dockerfile .
 
 create-container: ## create docker container
 	nvidia-docker run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(CONTAINER_NAME)

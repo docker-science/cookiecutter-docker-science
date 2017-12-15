@@ -1,33 +1,22 @@
-# Start with cuDNN base image
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
-MAINTAINER Yohei Kikuta <yohei-kikuta@cookpad.com>
+FROM ubuntu:16.04
 
-# Install git, wget, bc and dependencies
 RUN apt-get update && apt-get install -y \
   git \
-  iproute2 \
-  wget \
   python3.5 \
   python3-pip \
-  python3-dev \
-  libmysqlclient-dev
+  python3-dev
 
-# Update pip
 RUN pip3 install --upgrade pip
 
-# Install python modules.
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-# assume ubuntu user id is 1000.
 RUN useradd docker -u 1000 -s /bin/bash -m
 USER docker
 
-# Set alias for python3
 RUN echo "alias python=python3" >> $HOME/.bashrc && \
     echo "alias pip=pip3" >> $HOME/.bashrc
 
-# Set working directory
-WORKDIR /work
+WORKDIR /home/docker/work
 
 ENTRYPOINT ["/bin/bash"]
