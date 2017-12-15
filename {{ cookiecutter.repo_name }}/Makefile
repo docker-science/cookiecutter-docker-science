@@ -53,6 +53,9 @@ start-container: ## start docker instance
 jupyter: ## start Jupyter Notebook server
 	jupyter-notebook --ip=0.0.0.0 --port=${JUPYTER_CONTAINER_PORT} --config=$(JUPYTER_CONFIG_PATH)
 
+lint: ## check style with flake8
+	flake8 {{ cookiecutter.repo_name }}
+
 clean: clean-model clean-pyc  ## remove all artifacts
 
 clean-model: ## remove model artifacts
