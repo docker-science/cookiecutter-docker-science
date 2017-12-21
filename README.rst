@@ -72,3 +72,54 @@ The following is the initial directory structure generated in the previous secti
     └── scripts                           <- Users add the script files to generate model files or run evaluation.
 
 
+Makefile targets
+----------------
+
+cookiecutter-docker-science provides many targets to supports experiments in Docker container. Users can run the target with `make [TARGET]` command.
+
+init
+~~~~~
+
+After cootiecutter-docker-science generate the directories and files, users first run this command. `init` setups resources for experiments.
+Specifically `init` run `init-docker` and `init-data` command.
+
+init-docker
+~~~~~~~~~~~
+
+`init-docker` command first creates Docker the images based on `docker/Dockerfile`.
+
+init-data
+~~~~~~~~~~
+
+`init-data` downloads input files stored in S3. If you do not store the input files in S3, please modify the target to download the data source.
+
+create-container
+~~~~~~~~~~~~~~~~~
+
+`create-container` command creates Docker container based on the created image and login the Docker container.
+
+start-container
+~~~~~~~~~~~~~~~~
+
+`start-container` launches the Docker container created by the `create-container` target.
+
+
+jupyter
+~~~~~~~
+
+`jupyter` target launch Jupyter Notebook server.
+
+
+clean-model
+~~~~~~~~~~~~
+
+`clean` target removes the artifacts such as model files in `model` directory.
+
+
+clean-docker
+~~~~~~~~~~~~~
+
+`clean-docker` target removes the Docker images and container generated with `make init-docker` and `make create-container`.
+When we update Python libraries in `requirements.txt` or system tools in `Dockerfile`,
+we need to clean Docker the image and container with this target and create the updated image and container
+with `make init-docker` and `make create-container`.
