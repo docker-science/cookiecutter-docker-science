@@ -38,7 +38,7 @@ help:
 init: init-docker init-data ## initialize repository for traning
 
 init-data: ## download data
-	aws s3 sync $(DATA) ./data/
+	-aws s3 sync $(DATA) ./data/
 
 init-docker: ## initialize docker image
 	docker build -t $(CONTAINER_NAME) -f ./docker/Dockerfile .
