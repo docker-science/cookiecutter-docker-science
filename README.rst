@@ -51,3 +51,24 @@ Then the cookiecutter command ask for several questions on generated project as 
 
 Then you get the generated project directory, ``my-data-science-project``.
 
+Initial directories and Files
+-------------------------------
+
+The following is the initial directory structure generated in the previous section.
+
+::
+
+    ├── Makefile                          <- Makefile contains many targets such as create docker container or get input files.
+    ├── config                            <- This directory contains configuration files used in scripts or Jupyter Notebook.
+    │   └── jupyter_config.py
+    ├── data                              <- data directory contains the input resources.
+    ├── docker                            <- docker directory contains Dockerfile.
+    │   └── Dockerfile                    <- Dockerfile have the container settings. Users modify Dockerfile if additional library is needed for experiments.
+    ├── model                             <- model directory store the model files created in the experiments.
+    ├── my-data-science-project           <- cookie-cutter-docker-science creates the directory whose name is same as project name. In this directory users puts python files used in scripts or Jupyter Notebook.
+    │   └── __init__.py
+    ├── notebook                          <- This directory sotres the ipynb files saved in Jupyter Notebook.
+    ├── requirements.txt                  <- Libraries needed to run exeperiments. The library listed in this file are installed in the Docker container.
+    └── scripts                           <- Users add the script files to generate model files or run evaluation.
+
+
