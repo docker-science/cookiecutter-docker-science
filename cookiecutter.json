@@ -2,6 +2,6 @@
     "project_name": "project_name",
     "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "jupyter_host_port": "8888",
-    "description": "Input a short description",
-    "data_source": "Input data source"
+    "description": "Please Input a short description",
+    "data_source": "Please Input data source in S3"
 }
