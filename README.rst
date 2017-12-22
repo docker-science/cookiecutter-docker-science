@@ -152,8 +152,7 @@ Port number for Jupyter Notebook
 In the generation of project with cookiecutter, the default port of Jupyter Notebook in host is ``8888``. The number is common and could
 have a collision to another server processes.
 
-In such cases, you can make the Docker container changing the port number in ``make create-container``. For example the following command
- creates Docker container forwarding Jupyter default port ``8888`` to ``9900`` in host.
+In such cases, you can make the Docker container changing the port number in ``make create-container`` command. For example the following command creates Docker container forwarding Jupyter default port ``8888`` to ``9900`` in host.
 
 ::
 
