@@ -101,8 +101,8 @@ create-container
 start-container
 ~~~~~~~~~~~~~~~~
 
-`start-container` launches the Docker container created by the `create-container` target.
-
+`start-container` launches the Docker container created by the `create-container` target. Users need to run ``docker attache CONTAINER_NAME``
+, where ``CONTAINER_NAME`` is identical to project directory name.
 
 jupyter
 ~~~~~~~
@@ -123,3 +123,41 @@ clean-docker
 When we update Python libraries in `requirements.txt` or system tools in `Dockerfile`,
 we need to clean Docker the image and container with this target and create the updated image and container
 with `make init-docker` and `make create-container`.
+
+Working in Docker container
+----------------------------
+
+Files and directories
+~~~~~~~~~~~~~~~~~~~~~
+
+When you log in Docker container by ``make create-container`` or ``Docker attach CONTAINER_NAME``, the login directory is ``/work``.
+The directory contains the project directories in host computer such as ``data`` or ``model``. Actually the Docker container mounts
+the project directory in ``/work`` and therefore when you edit the files in the Docker container, the changes are
+reflected in the files in host environments.
+
+Jupyter Notebook
+~~~~~~~~~~~~~~~~~
+
+We can run Jupyter Notebook in the Docker container. The Jupyter Notebook uses the default port ``8888`` in **Docker container (NOT HOST)** and
+the port is forwarded to the one you specify with ``jupyter_host_port``  in the cootiecutter command. You can see the Jupyter Notebook UI accessing
+"http://localhost:jupyter_host_port". When you save notebooks the files are saved in the ``notebook`` directory.
+
+Tips
+-----
+
+
+Port number for Jupyter Notebook
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the generation of project with cookiecutter, the default port of Jupyter Notebook in host is ``8888``. The number is common and could
+have a collision to another server processes.
+
+In such cases, you can make the Docker container changing the port number in ``make create-container``. For example the following command
+ creates Docker container forwarding Jupyter default port ``8888`` to ``9900`` in host.
+
+::
+
+    make create-container JUPYTER_HOST_PORT=9900
+    docker run -it -v /Users/takahi-i/work/my-data-science-project:/work -p 9900:8888 --name my-data-science-project my-data-science-project
+
+Then you launch Jupyter Notebook in the Docker container, you can see the Jupyter Notebook in http://localhost:9900
