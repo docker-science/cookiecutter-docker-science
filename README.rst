@@ -101,8 +101,7 @@ create-container
 start-container
 ~~~~~~~~~~~~~~~~
 
-`start-container` launches the Docker container created by the `create-container` target. Users need to run ``docker attache CONTAINER_NAME``
-, where ``CONTAINER_NAME`` is identical to project directory name.
+Users can start and login the Docker container with `start container` created by the `create-container`.
 
 jupyter
 ~~~~~~~
@@ -130,7 +129,7 @@ Working in Docker container
 Files and directories
 ~~~~~~~~~~~~~~~~~~~~~
 
-When you log in Docker container by ``make create-container`` or ``Docker attach CONTAINER_NAME``, the login directory is ``/work``.
+When you log in Docker container by ``make create-container`` or ``make start-container`` command, the login directory is ``/work``.
 The directory contains the project directories in host computer such as ``data`` or ``model``. Actually the Docker container mounts
 the project directory in ``/work`` and therefore when you edit the files in the Docker container, the changes are
 reflected in the files in host environments.
