@@ -8,7 +8,7 @@ We setup the development environment in a Docker container with the following co
 
 - `make init`
 
-This command gets the resources for train and test and then setup the Docker image for the expements.
+This command gets the resources for training and testing, and then prepares the Docker image for the experiments.
 After creating the Docker image, you run the following command.
 
 - `make create-container`
