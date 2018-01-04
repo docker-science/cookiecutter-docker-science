@@ -48,7 +48,7 @@ Then the cookiecutter command ask for several questions on generated project as 
 
 ::
 
-    cookiecutter ~/cookiecutter-docker-science-alpha
+    $cookiecutter ~/cookiecutter-docker-science-alpha
     project_name [project_name]: my-data-science-project
     repo_name [my-data-science-project]:
     jupyter_host_port [8888]: 9999
@@ -67,7 +67,7 @@ The following is the initial directory structure generated in the previous secti
     ├── Makefile                          <- Makefile contains many targets such as create docker container or
     │                                        get input files.
     ├── config                            <- This directory contains configuration files used in scripts
-    │                                        or Jupyter Notebook.
+    │   │                                    or Jupyter Notebook.
     │   └── jupyter_config.py
     ├── data                              <- data directory contains the input resources.
     ├── docker                            <- docker directory contains Dockerfile.
@@ -120,6 +120,10 @@ jupyter
 
 `jupyter` target launch Jupyter Notebook server.
 
+profile
+~~~~~~~
+
+`profile` target shows the misc information of the project such as port number or container name.
 
 clean-model
 ~~~~~~~~~~~~
@@ -150,8 +154,8 @@ Jupyter Notebook
 ~~~~~~~~~~~~~~~~~
 
 We can run Jupyter Notebook in the Docker container. The Jupyter Notebook uses the default port ``8888`` in **Docker container (NOT HOST)** and
-the port is forwarded to the one you specify with ``jupyter_host_port``  in the cootiecutter command. You can see the Jupyter Notebook UI accessing
-"http://localhost:jupyter_host_port". When you save notebooks the files are saved in the ``notebook`` directory.
+the port is forwarded to the one you specify with ``JUPYTER_HOST_PORT``  in the cootiecutter command. You can see the Jupyter Notebook UI accessing
+"http://localhost:JUPYTER_HOST_PORT". When you save notebooks the files are saved in the ``notebook`` directory.
 
 Tips
 -----
@@ -169,6 +173,5 @@ For example the following command creates Docker container forwarding Jupyter de
 ::
 
     make create-container JUPYTER_HOST_PORT=9900
-    docker run -it -v /Users/takahi-i/work/my-data-science-project:/work -p 9900:8888 --name my-data-science-project my-data-science-project
 
 Then you launch Jupyter Notebook in the Docker container, you can see the Jupyter Notebook in http://localhost:9900
