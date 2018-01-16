@@ -40,9 +40,9 @@ To generate your project from docker template, please run the following 2 comman
 
 2. Generate project directory from template
 
-To generate project from the template, please run the following command.
+To generate project from the template, please run the following command on the parent directory of the repository.
 
-``cookiecutter ../cookiecutter-docker-science-alpha``
+``cookiecutter ./cookiecutter-docker-science-alpha``
 
 Then the cookiecutter command ask for several questions on generated project as follows.
 
@@ -95,15 +95,13 @@ init
 After cootiecutter-docker-science generate the directories and files, users first run this command. `init` setups resources for experiments.
 Specifically `init` run `init-docker` and `init-data` command.
 
-init-docker
-~~~~~~~~~~~
+- init-docker
 
-`init-docker` command first creates Docker the images based on `docker/Dockerfile`.
+  `init-docker` command first creates Docker the images based on `docker/Dockerfile`.
 
-init-data
-~~~~~~~~~~
+- init-data
 
-`init-data` downloads input files stored in S3. If you do not store the input files in S3, please modify the target to download the data source.
+  `init-data` downloads input files stored in S3. If you do not store the input files in S3, please modify the target to download the data source.
 
 create-container
 ~~~~~~~~~~~~~~~~~
@@ -125,19 +123,33 @@ profile
 
 `profile` target shows the misc information of the project such as port number or container name.
 
-clean-model
-~~~~~~~~~~~~
 
-`clean` target removes the artifacts such as model files in `model` directory.
+clean
+~~~~~
 
+`clean` target removes the artifacts such as models and *.pyc files.
 
-clean-docker
-~~~~~~~~~~~~~
+- clean-model
 
-`clean-docker` target removes the Docker images and container generated with `make init-docker` and `make create-container`.
-When we update Python libraries in `requirements.txt` or system tools in `Dockerfile`,
-we need to clean Docker the image and container with this target and create the updated image and container
-with `make init-docker` and `make create-container`.
+  `clean-model` command removes model files in `model` directory.
+
+- clean-pyc
+
+  `clean-pyc` command removes model files of *.pyc, *.pyo and __pycache__.
+
+distclean
+~~~~~~~~~
+
+`distclean` target removes large filesize objects such as datasets and docker images.
+
+- clean-data
+
+  `clean-data` command removes all datasets in `data` directory.
+
+- clean-docker
+
+  `clean-docker` command removes the Docker images and container generated with `make init-docker` and `make create-container`.
+  When we update Python libraries in `requirements.txt` or system tools in `Dockerfile`, we need to clean Docker the image and container with this target and create the updated image and container with `make init-docker` and `make create-container`.
 
 Working in Docker container
 ----------------------------
