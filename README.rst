@@ -40,9 +40,9 @@ To generate your project from docker template, please run the following 2 comman
 
 2. Generate project directory from template
 
-To generate project from the template, please run the following command.
+To generate project from the template, please run the following command on the parent directory of the repository.
 
-``cookiecutter ../cookiecutter-docker-science-alpha``
+``cookiecutter ./cookiecutter-docker-science-alpha``
 
 Then the cookiecutter command ask for several questions on generated project as follows.
 
