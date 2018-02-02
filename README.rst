@@ -1,7 +1,8 @@
 Introduction
 ------------
 
-.. note:: please see `the slides <https://docs.google.com/presentation/d/1GN2YbCzAyz3yim6TpRYuzq4W9qQKwts_nZWOAlSF9Rs/edit#slide=id.p>`_ before you get started.
+.. note:: please see `the slides <https://speakerdeck.com/takahiko03/cookiecutter-for-ml-experiments-with-docker>`_ before you get started.
+
 
 Many researchers and engineers do their machine learning or data mining experiments.
 For such data engineering tasks, researchers apply various tools and system libraries which are constantly
