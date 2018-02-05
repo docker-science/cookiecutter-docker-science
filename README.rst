@@ -33,30 +33,22 @@ Requirements
 Quick start
 -----------
 
-To generate your project from docker template, please run the following 2 commands.
+To generate project from the cookiecutter-doccker-science template, please run the following command.
 
-1. Downaload cookiecutter template repositiory (`cookiecutter-docker-science-alpha`)
-
-``git clone git@ghe.ckpd.co:research/cookiecutter-docker-science-alpha.git``
-
-2. Generate project directory from template
-
-To generate project from the template, please run the following command on the parent directory of the repository.
-
-``cookiecutter ./cookiecutter-docker-science-alpha``
+``cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git``
 
 Then the cookiecutter command ask for several questions on generated project as follows.
 
 ::
 
-    $cookiecutter ~/cookiecutter-docker-science-alpha
-    project_name [project_name]: my-data-science-project
-    repo_name [my-data-science-project]:
-    jupyter_host_port [8888]: 9999
-    description [Please Input a short description]: This project keep the experimental results on automatic image detection tasks.
-    data_source [Please Input data source in S3]: s3://cookiecutter.ap-northeast-1/data/image
+    cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git
+    project_name [project_name]: food-image-classification
+    repo_name [food-image-classification]:
+    jupyter_host_port [8888]:
+    description [Please Input a short description]: Classify food images into several categories
+    data_source [Please Input data source in S3]: s3://research-data/food-images
 
-Then you get the generated project directory, ``my-data-science-project``.
+Then you get the generated project directory, ``food-image-classification``.
 
 Initial directories and Files
 -------------------------------
