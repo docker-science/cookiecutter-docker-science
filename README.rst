@@ -3,6 +3,9 @@ Introduction
 
 .. note:: please see `the slides <https://speakerdeck.com/takahiko03/cookiecutter-for-ml-experiments-with-docker>`_ before you get started.
 
+.. raw:: html
+
+    <script async class="speakerdeck-embed" data-id="eb687f10632f49ec87b3b677dd197905" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
 Many researchers and engineers do their machine learning or data mining experiments.
 For such data engineering tasks, researchers apply various tools and system libraries which are constantly
