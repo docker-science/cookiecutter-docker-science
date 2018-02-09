@@ -144,6 +144,11 @@ distclean
   `clean-docker` command removes the Docker images and container generated with `make init-docker` and `make create-container`.
   When we update Python libraries in `requirements.txt` or system tools in `Dockerfile`, we need to clean Docker the image and container with this target and create the updated image and container with `make init-docker` and `make create-container`.
 
+lint
+~~~~~
+
+`lint` target check if coding style meets the coding standard.
+
 Working in Docker container
 ----------------------------
 
