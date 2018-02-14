@@ -3,5 +3,6 @@
     "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "jupyter_host_port": "8888",
     "description": "Please Input a short description",
-    "data_source": "Please Input data source in S3"
+    "data_source": "Please Input data source in S3",
+    "use_nvidia_docker": ["no", "yes"]
 }
