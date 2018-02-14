@@ -30,6 +30,19 @@ After creating the container, you just need run `make start-container`.
 
 When you logout from shell in Docker container, please run `exit` in the console.
 
+### Run linter
+
+When you check the code quality, please run `make lint`
+
+### Show profile of Docker container
+
+When you see the status of Docker container, please run `make profile` in host machine.
+
+### Use Jupyter Notebook
+
+To launch Jupyter Notebook, please run `make jupyter` in the Docker container. After launch the Jupyter Notebook, you can
+access the Jupyter Notebook service in http://localhost:{{ JUPYTER_HOST_PORT }}.
+
 ### Development
 
 We continue the development of this repository. When we need to add libraries in Dockerfile or requirements.txt
