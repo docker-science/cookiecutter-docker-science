@@ -21,7 +21,6 @@ endef
 
 # VARIABLES
 
-
 {% if cookiecutter.use_nvidia_docker == 'yes' -%}
 export DOCKER=nvidia-docker
 {% else %}

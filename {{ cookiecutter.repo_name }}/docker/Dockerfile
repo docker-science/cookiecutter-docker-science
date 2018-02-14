@@ -1,4 +1,8 @@
+{% if cookiecutter.use_nvidia_docker == 'yes' -%}
+FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+{% else %}
 FROM ubuntu:16.04
+{%- endif %}
 
 RUN apt-get update && apt-get install -y \
   git \
