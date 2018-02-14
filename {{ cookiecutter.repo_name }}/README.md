@@ -49,4 +49,4 @@ When you see the status of Docker container, please run `make profile` in host m
 ### Use Jupyter Notebook
 
 To launch Jupyter Notebook, please run `make jupyter` in the Docker container. After launch the Jupyter Notebook, you can
-access the Jupyter Notebook service in http://localhost:{{ JUPYTER_HOST_PORT }}.
+access the Jupyter Notebook service in http://localhost:{{ cookiecutter.jupyter_host_port }}.

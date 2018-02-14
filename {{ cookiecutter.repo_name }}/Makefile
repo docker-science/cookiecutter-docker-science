@@ -64,7 +64,7 @@ profile: ## show profile of the project
 	@echo "JUPYTER_PORT: `docker port ${CONTAINER_NAME}`"
 	@echo "DATA: ${DATA}"
 
-clean: clean-model clean-pyc  ## remove all artifacts
+clean: clean-model clean-pyc clean-docker ## remove all artifacts
 
 clean-model: ## remove model artifacts
 	rm -fr model/*
