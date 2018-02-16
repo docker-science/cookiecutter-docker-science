@@ -13,7 +13,7 @@ updated, installing and updating them cause problems in local environments. Even
 environments such as EC2, we are not free from this problem. Some experiments succeeded in one
 instance but failed in another one, since library versions of each EC2 instances could be different.
 
-By contrast, we can creates the same container in which needed tools with the same version are already installed in one command without
+By contrast, we can creates the identical Docker container in which needed tools with the correct versions are already installed in one command without
 changing system libraries in host machines. This aspect of Docker is important for reproducibility of experiments,
 and keep the projects in continuous integration systems.
 
@@ -53,8 +53,8 @@ Then the cookiecutter command ask for several questions on generated project as 
 
 Then you get the generated project directory, ``food-image-classification``.
 
-Initial directories and Files
--------------------------------
+Initial directories and files
+-----------------------------
 
 The following is the initial directory structure generated in the previous section.
 
