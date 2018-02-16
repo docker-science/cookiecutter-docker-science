@@ -76,7 +76,7 @@ The following is the initial directory structure generated in the previous secti
     │   │                                    or Jupyter Notebook.
     │   └── __init__.py
     ├── notebook                          <- This directory sotres the ipynb files saved in Jupyter Notebook.
-    ├── requirements.txt                  <- Libraries needed to run exeperiments. The library listed in this file
+    ├── requirements.txt                  <- Libraries needed to run experiments. The library listed in this file
     │                                        are installed in the Docker container.
     └── scripts                           <- Users add the script files to generate model files or run evaluation.
 
