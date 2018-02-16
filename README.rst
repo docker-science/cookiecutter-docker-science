@@ -32,6 +32,7 @@ Requirements
 
 * Python 2.7 or Python 3.5
 * Cookiecutter 1.6 or later
+* Docker version 17 or later
 
 Quick start
 -----------
