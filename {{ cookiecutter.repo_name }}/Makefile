@@ -34,7 +34,6 @@ export CONTAINER_NAME= {{ cookiecutter.repo_name }}
 export DATA={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
-export JUPYTER_CONFIG_PATH=config/jupyter_config.py
 
 # TARGETS
 
@@ -58,7 +57,7 @@ start-container: ## start docker instance
 	$(DOCKER) attach $(CONTAINER_NAME)
 
 jupyter: ## start Jupyter Notebook server
-	jupyter-notebook --ip=0.0.0.0 --port=${JUPYTER_CONTAINER_PORT} --config=$(JUPYTER_CONFIG_PATH)
+	jupyter-notebook --ip=0.0.0.0 --port=${JUPYTER_CONTAINER_PORT}
 
 lint: ## check style with flake8
 	flake8 {{ cookiecutter.repo_name }}
