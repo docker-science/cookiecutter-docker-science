@@ -42,6 +42,10 @@ When you logout from shell in Docker container, please run `exit` in the console
 
 When you check the code quality, please run `make lint`
 
+### Run test
+
+When you run test in `tests` directory, please run `make test`
+
 ### Show profile of Docker container
 
 When you see the status of Docker container, please run `make profile` in host machine.

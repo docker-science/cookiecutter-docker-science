@@ -59,6 +59,9 @@ start-container: ## start docker instance
 jupyter: ## start Jupyter Notebook server
 	jupyter-notebook --ip=0.0.0.0 --port=${JUPYTER_CONTAINER_PORT}
 
+test: ## run test cases in tests directory
+	python -m unittest discover
+
 lint: ## check style with flake8
 	flake8 {{ cookiecutter.repo_name }}
 
