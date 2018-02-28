@@ -39,7 +39,7 @@ export JUPYTER_CONFIG_PATH=config/jupyter_config.py
 # TARGETS
 
 help:
-	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 init: init-docker init-data ## initialize repository for traning
 
