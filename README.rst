@@ -153,6 +153,11 @@ lint
 
 `lint` target check if coding style meets the coding standard.
 
+test
+~~~~~
+
+`test` target executes tests.
+
 Working in Docker container
 ----------------------------
 
