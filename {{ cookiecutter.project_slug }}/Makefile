@@ -29,8 +29,8 @@ export DOCKER=docker
 export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
 export PYTHONPATH=$PYTHONPATH:$(PWD)
-export IMAGE_NAME= {{ cookiecutter.repo_name }}
-export CONTAINER_NAME= {{ cookiecutter.repo_name }}
+export IMAGE_NAME= {{ cookiecutter.project_slug }}
+export CONTAINER_NAME= {{ cookiecutter.project_slug }}
 export DATA={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
@@ -63,7 +63,7 @@ test: ## run test cases in tests directory
 	python -m unittest discover
 
 lint: ## check style with flake8
-	flake8 {{ cookiecutter.repo_name }}
+	flake8 {{ cookiecutter.project_slug }}
 
 profile: ## show profile of the project
 	@echo "CONTAINER_NAME: $(CONTAINER_NAME)"

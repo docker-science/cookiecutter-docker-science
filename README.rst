@@ -47,7 +47,7 @@ Then the cookiecutter command ask for several questions on generated project as 
 
     cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git
     project_name [project_name]: food-image-classification
-    repo_name [food-image-classification]:
+    project_slug [food_image_classification]:
     jupyter_host_port [8888]:
     description [Please Input a short description]: Classify food images into several categories
     data_source [Please Input data source in S3]: s3://research-data/food-images
@@ -71,7 +71,7 @@ The following is the initial directory structure generated in the previous secti
     │   └── Dockerfile                    <- Dockerfile have the container settings. Users modify Dockerfile
     │                                        if additional library is needed for experiments.
     ├── model                             <- model directory store the model files created in the experiments.
-    ├── my-data-science-project           <- cookie-cutter-docker-science creates the directory whose name is same
+    ├── my_data_science_project           <- cookie-cutter-docker-science creates the directory whose name is same
     │   │                                    as project name. In this directory users puts python files used in scripts
     │   │                                    or Jupyter Notebook.
     │   └── __init__.py
