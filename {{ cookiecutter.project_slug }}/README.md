@@ -1,4 +1,4 @@
-# {{ cookiecutter.repo_name }}
+# {{ cookiecutter.project_slug }}
 
 {{ cookiecutter.description }}
 
@@ -31,7 +31,7 @@ and then `make init-docker` command to create the Docker container with the late
 ### Login Docker container
 
 Only the first time you need to create a Docker container, from the image created in `make init` command.
-`make create-container` creates and launch the {{ cookiecutter.repo_name }} container.
+`make create-container` creates and launch the {{ cookiecutter.project_slug }} container.
 After creating the container, you just need run `make start-container`.
 
 ### Logout from Docker container
