@@ -1,8 +1,13 @@
 .. contents:: Table of Contents
     :depth: 1
 
+.. |travis| image:: https://travis-ci.org/docker-science/cookiecutter-docker-science.svg?branch=master
+    :target: https://travis-ci.org/docker-science/cookiecutter-docker-science
+
 Introduction
 ------------
+
+|travis|
 
 .. note:: please see `the slides <https://speakerdeck.com/takahiko03/cookiecutter-for-ml-experiments-with-docker>`_ before you get started.
 
