@@ -17,7 +17,7 @@ By contrast, we can creates the identical Docker container in which needed tools
 changing system libraries in host machines. This aspect of Docker is important for reproducibility of experiments,
 and keep the projects in continuous integration systems.
 
-Unfortunately running experiments in Docker containers is troublesome. Adding a new library into ``requirements.txt``
+Unfortunately running experiments in a Docker containers is troublesome. Adding a new library into ``requirements.txt``
 or ``Dockerfile`` does not installed as if local machine. We need to create Docker image and container each time.
 We also need to forward ports to see server responses such as Jupyter Notebook UI launch in Docker container in our local PC.
 ``cookiecutter-docker-science`` provides utilities to make working in Docker container simple.
@@ -172,7 +172,7 @@ reflected in the files in host environments.
 Jupyter Notebook
 ~~~~~~~~~~~~~~~~~
 
-We can run Jupyter Notebook in the Docker container. The Jupyter Notebook uses the default port ``8888`` in **Docker container (NOT HOST)** and
+We can run a Jupyter Notebook in the Docker container. The Jupyter Notebook uses the default port ``8888`` in **Docker container (NOT host machine)** and
 the port is forwarded to the one you specify with ``JUPYTER_HOST_PORT``  in the cootiecutter command. You can see the Jupyter Notebook UI accessing
 "http://localhost:JUPYTER_HOST_PORT". When you save notebooks the files are saved in the ``notebook`` directory.
 
