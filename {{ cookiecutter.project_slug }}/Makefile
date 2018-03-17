@@ -1,8 +1,8 @@
-.PHONY: clean clean-model clean-pyc docs help init init-data init-docker start-container
+.PHONY: clean clean-model clean-pyc docs help init init-data init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker
 .DEFAULT_GOAL := help
 
 ###########################################################################################################
-# SCRIPTS
+## SCRIPTS
 ###########################################################################################################
 
 define PRINT_HELP_PYSCRIPT
@@ -22,7 +22,7 @@ fi
 endef
 
 ###########################################################################################################
-# VARIABLES
+## VARIABLES
 ###########################################################################################################
 
 {% if cookiecutter.use_nvidia_docker == 'yes' -%}
@@ -40,7 +40,7 @@ export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
 
 ###########################################################################################################
-# TARGETS
+## TARGETS
 ###########################################################################################################
 
 help:
@@ -90,9 +90,9 @@ clean-pyc: ## remove Python file artifacts
 
 distclean: clean clean-data clean-docker ## remove all the reproducible resources including Docker images
 
-clean-data:
+clean-data: ## remove files under data
 	rm -fr data/*
 
-clean-docker:
+clean-docker: ## remove Docker image and container
 	-$(DOCKER) rm $(CONTAINER_NAME)
 	-$(DOCKER) image rm $(CONTAINER_NAME)
