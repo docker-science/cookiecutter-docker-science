@@ -1,7 +1,9 @@
 .PHONY: clean clean-model clean-pyc docs help init init-data init-docker start-container
 .DEFAULT_GOAL := help
 
+###########################################################################################################
 # SCRIPTS
+###########################################################################################################
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
@@ -19,7 +21,9 @@ if [ `$(DOCKER) inspect -f {% raw -%}{{.State.Running}}{%- endraw %} $(CONTAINER
 fi
 endef
 
+###########################################################################################################
 # VARIABLES
+###########################################################################################################
 
 {% if cookiecutter.use_nvidia_docker == 'yes' -%}
 export DOCKER=nvidia-docker
@@ -35,7 +39,9 @@ export DATA={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
 
+###########################################################################################################
 # TARGETS
+###########################################################################################################
 
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
