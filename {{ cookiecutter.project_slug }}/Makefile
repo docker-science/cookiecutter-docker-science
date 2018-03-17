@@ -90,9 +90,9 @@ clean-pyc: ## remove Python file artifacts
 
 distclean: clean clean-data clean-docker ## remove all the reproducible resources including Docker images
 
-clean-data:
+clean-data: ## remove files under data
 	rm -fr data/*
 
-clean-docker:
+clean-docker: ## remove Docker image and container
 	-$(DOCKER) rm $(CONTAINER_NAME)
 	-$(DOCKER) image rm $(CONTAINER_NAME)
