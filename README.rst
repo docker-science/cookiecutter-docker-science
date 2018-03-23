@@ -50,7 +50,7 @@ Then the cookiecutter command ask for several questions on generated project as 
 
 ::
 
-    cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git
+    $cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git
     project_name [project_name]: food-image-classification
     project_slug [food_image_classification]:
     jupyter_host_port [8888]:
@@ -199,3 +199,13 @@ For example the following command creates Docker container forwarding Jupyter de
     make create-container JUPYTER_HOST_PORT=9900
 
 Then you launch Jupyter Notebook in the Docker container, you can see the Jupyter Notebook in http://localhost:9900
+
+License
+-------
+
+Apache version 2.0
+
+Contribution
+-------------
+
+See `CONTRIBUTING.md <CONTRIBUTING.md>`.
