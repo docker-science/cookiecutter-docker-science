@@ -4,6 +4,7 @@ FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 FROM ubuntu:16.04
 {%- endif %}
 
+ENV COOKIECUTTER_INSIDE_CONTAINER true
 RUN apt-get update && apt-get install -y \
   git \
   python3.5 \
@@ -22,5 +23,4 @@ RUN echo "alias python=python3" >> $HOME/.bashrc && \
     echo "alias pip=pip3" >> $HOME/.bashrc
 
 WORKDIR /work
-
 ENTRYPOINT ["/bin/bash"]

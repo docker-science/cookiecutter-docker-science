@@ -21,6 +21,16 @@ if [ `$(DOCKER) inspect -f {% raw -%}{{.State.Running}}{%- endraw %} $(CONTAINER
 fi
 endef
 
+define CHECKIF_HOST_PYSCRIPT
+import os, sys
+if "COOKIECUTTER_INSIDE_CONTAINER" in os.environ:
+        print("ERROR: you are in docker container")
+        sys.exit(-1)
+else:
+        print("INFO: you are not in docker container")
+        sys.exit(0)
+endef
+
 ###########################################################################################################
 ## VARIABLES
 ###########################################################################################################
@@ -32,6 +42,7 @@ export DOCKER=docker
 {%- endif %}
 export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
+export CHECKIF_HOST_PYSCRIPT
 export PYTHONPATH=$PYTHONPATH:$(PWD)
 export IMAGE_NAME= {{ cookiecutter.project_slug }}
 export CONTAINER_NAME= {{ cookiecutter.project_slug }}
@@ -52,6 +63,7 @@ init-data: ## download data
 	-aws s3 sync $(DATA) ./data/
 
 init-docker: ## initialize docker image
+	@python -c "$$CHECKIF_HOST_PYSCRIPT"
 	$(DOCKER) build -t $(CONTAINER_NAME) -f ./docker/Dockerfile .
 
 create-container: ## create docker container
