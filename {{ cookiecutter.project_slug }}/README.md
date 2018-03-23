@@ -57,4 +57,8 @@ access the Jupyter Notebook service in http://localhost:{{ cookiecutter.jupyter_
 
 ## License
 
-* Apache version 2.0
+Apache version 2.0
+
+## Contribution
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
