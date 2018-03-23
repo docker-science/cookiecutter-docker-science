@@ -208,4 +208,4 @@ Apache version 2.0
 Contribution
 -------------
 
-See `CONTRIBUTING.md <CONTRIBUTING.md>`.
+See `CONTRIBUTING.md <CONTRIBUTING.md>`_.
