@@ -1,4 +1,7 @@
-.. contents:: Table of Contents
+Table of Contents
+------------------
+
+.. contents:: This article consists of the following sections.
     :depth: 1
 
 .. |travis| image:: https://travis-ci.org/docker-science/cookiecutter-docker-science.svg?branch=master
