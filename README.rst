@@ -1,6 +1,8 @@
 .. |travis| image:: https://travis-ci.org/docker-science/cookiecutter-docker-science.svg?branch=master
     :target: https://travis-ci.org/docker-science/cookiecutter-docker-science
 
+|travis|
+
 Table of Contents
 ------------------
 
