@@ -57,7 +57,7 @@ init-docker: ## initialize docker image
 create-container: ## create docker container
 	$(DOCKER) run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(CONTAINER_NAME)
 
-start-container: ## start docker instance
+start-container: ## start docker container
 	@echo "$$START_DOCKER_CONTAINER" | $(SHELL)
 	@echo "Launched $(CONTAINER_NAME)..."
 	$(DOCKER) attach $(CONTAINER_NAME)
