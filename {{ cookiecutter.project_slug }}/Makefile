@@ -38,13 +38,14 @@ export CONTAINER_NAME= {{ cookiecutter.project_slug }}
 export DATA={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
+export PYTHON=python3
 
 ###########################################################################################################
 ## TARGETS
 ###########################################################################################################
 
 help:
-	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+	@$(PYTHON) -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 init: init-docker init-data ## initialize repository for traning
 
@@ -66,7 +67,7 @@ jupyter: ## start Jupyter Notebook server
 	jupyter-notebook --ip=0.0.0.0 --port=${JUPYTER_CONTAINER_PORT}
 
 test: ## run test cases in tests directory
-	python -m unittest discover
+	$(PYTHON) -m unittest discover
 
 lint: ## check style with flake8
 	flake8 {{ cookiecutter.project_slug }}

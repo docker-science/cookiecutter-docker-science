@@ -18,9 +18,6 @@ RUN pip install -r /requirements.txt
 RUN useradd docker -u 1000 -s /bin/bash -m
 USER docker
 
-RUN echo "alias python=python3" >> $HOME/.bashrc && \
-    echo "alias pip=pip3" >> $HOME/.bashrc
-
 WORKDIR /work
 
 ENTRYPOINT ["/bin/bash"]
