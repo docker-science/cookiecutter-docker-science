@@ -33,8 +33,9 @@ export DOCKER=docker
 export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
 export PYTHONPATH=$PYTHONPATH:$(PWD)
-export IMAGE_NAME= {{ cookiecutter.project_slug }}
-export CONTAINER_NAME= {{ cookiecutter.project_slug }}
+export PROJECT_NAME={{ cookiecutter.project_slug }}
+export IMAGE_NAME=$(PROJECT_NAME)-image
+export CONTAINER_NAME=$(PROJECT_NAME)-container
 export DATA={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
@@ -52,10 +53,10 @@ init-data: ## download data
 	-aws s3 sync $(DATA) ./data/
 
 init-docker: ## initialize docker image
-	$(DOCKER) build -t $(CONTAINER_NAME) -f ./docker/Dockerfile .
+	$(DOCKER) build -t $(IMAGE_NAME) -f ./docker/Dockerfile .
 
 create-container: ## create docker container
-	$(DOCKER) run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(CONTAINER_NAME)
+	$(DOCKER) run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 start-container: ## start docker container
 	@echo "$$START_DOCKER_CONTAINER" | $(SHELL)
@@ -95,4 +96,4 @@ clean-data: ## remove files under data
 
 clean-docker: ## remove Docker image and container
 	-$(DOCKER) rm $(CONTAINER_NAME)
-	-$(DOCKER) image rm $(CONTAINER_NAME)
+	-$(DOCKER) image rm $(IMAGE_NAME)
