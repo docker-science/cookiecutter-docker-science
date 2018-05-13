@@ -203,6 +203,13 @@ For example the following command creates Docker container forwarding Jupyter de
 
 Then you launch Jupyter Notebook in the Docker container, you can see the Jupyter Notebook in http://localhost:9900
 
+Override Dockerfile setting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some project have multiple Dockerfile. One Dockerfile (`Dockerfile.gpu`) is contains the settings for GPU machines, other (`Dockerfile.cpu`) contains for settings for non gpu machines.
+For such situation, we can override the settings adding parameters to make command. For example, when we want to create a container from `docker/Dockerfile.cpu`,
+we run `make create DOCKERFILE=docker/Dockerfile.cpu`.
+
 License
 -------
 
