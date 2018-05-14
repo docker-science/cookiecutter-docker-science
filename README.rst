@@ -47,7 +47,7 @@ Quick start
 
 To generate project from the cookiecutter-doccker-science template, please run the following command.
 
-``cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git``
+``$cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git``
 
 Then the cookiecutter command ask for several questions on generated project as follows.
 
@@ -174,7 +174,7 @@ Files and directories
 
 When you log in a Docker container by ``make create-container`` or ``make start-container`` command, the log in directory is ``/work``.
 The directory contains the project top directories in host computer such as ``data`` or ``model``. Actually the Docker container mounts
-the project directory in ``/work`` and therefore when you edit the files in the Docker container, the changes are
+the project directory to ``/work`` of the container and therefore when you edit the files in the host environment with your favorite editor, the changes are
 reflected in the files in host environments.
 
 Jupyter Notebook
