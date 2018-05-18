@@ -40,6 +40,7 @@ export DATA={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
 export PYTHON=python3
+export DOCKERFILE=docker/Dockerfile
 
 ###########################################################################################################
 ## TARGETS
@@ -54,7 +55,8 @@ init-data: ## download data
 	-aws s3 sync $(DATA) ./data/
 
 init-docker: ## initialize docker image
-	$(DOCKER) build -t $(IMAGE_NAME) -f ./docker/Dockerfile .
+	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) .
+
 
 create-container: ## create docker container
 	$(DOCKER) run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME)
