@@ -141,19 +141,19 @@ clean
 
   `clean-pyc` command removes model files of *.pyc, *.pyo and __pycache__.
 
-distclean
-~~~~~~~~~
-
-`distclean` target removes large filesize objects such as datasets and docker images.
-
-- clean-data
-
-  `clean-data` command removes all datasets in `data` directory.
-
 - clean-docker
 
   `clean-docker` command removes the Docker images and container generated with `make init-docker` and `make create-container`.
   When we update Python libraries in `requirements.txt` or system tools in `Dockerfile`, we need to clean Docker the image and container with this target and create the updated image and container with `make init-docker` and `make create-container`.
+
+distclean
+~~~~~~~~~
+
+`distclean` target removes all reproducible objects. Specifically this target run `clean` target and remove all files in data directory.
+
+- clean-data
+
+  `clean-data` command removes all datasets in `data` directory.
 
 lint
 ~~~~~

@@ -97,7 +97,7 @@ clean-pyc: ## remove Python file artifacts
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
 
-distclean: clean clean-data clean-docker ## remove all the reproducible resources including Docker images
+distclean: clean clean-data ## remove all the reproducible resources including Docker images
 
 clean-data: ## remove files under data
 	rm -fr data/*
