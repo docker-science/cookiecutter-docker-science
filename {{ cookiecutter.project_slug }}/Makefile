@@ -1,4 +1,4 @@
-.PHONY: clean clean-model clean-pyc docs help init init-data init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker
+.PHONY: clean clean-model clean-pyc docs help init init-data init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker clean-container clean-image
 .DEFAULT_GOAL := help
 
 ###########################################################################################################
@@ -102,6 +102,10 @@ distclean: clean clean-data ## remove all the reproducible resources including D
 clean-data: ## remove files under data
 	rm -fr data/*
 
-clean-docker: ## remove Docker image and container
+clean-docker: clean-container clean-image ## remove Docker image and container
+
+clean-container: ## remove Docker container
 	-$(DOCKER) rm $(CONTAINER_NAME)
+
+clean-image: ## remove Docker image
 	-$(DOCKER) image rm $(IMAGE_NAME)
