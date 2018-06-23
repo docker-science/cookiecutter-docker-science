@@ -36,7 +36,7 @@ export PYTHONPATH=$PYTHONPATH:$(PWD)
 export PROJECT_NAME={{ cookiecutter.project_slug }}
 export IMAGE_NAME=$(PROJECT_NAME)-image
 export CONTAINER_NAME=$(PROJECT_NAME)-container
-export DATA={{ cookiecutter.data_source }}
+export DATA_SOURCE={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
 export PYTHON=python3
@@ -57,7 +57,13 @@ help:
 init: init-docker init-data ## initialize repository for traning
 
 init-data: ## download data
-	-aws s3 sync $(DATA) ./data/
+{% if cookiecutter.data_source_type == 's3' -%}
+	-aws s3 sync $(DATA_SOURCE) ./data/
+{% else if cookiecutter.data_source_type == 'nfs' %}
+	cp -r $(DATA_SOURCE)/* ./data/
+{% else if cookiecutter.data_source_type == 'url' %}
+	wget $(DATA_SOURCE) -P ./data/
+{%- endif %}
 
 init-docker: ## initialize docker image
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) .
