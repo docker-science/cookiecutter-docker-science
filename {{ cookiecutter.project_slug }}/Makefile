@@ -57,13 +57,13 @@ help:
 init: init-docker init-data ## initialize repository for traning
 
 init-data: ## download data
-{% if cookiecutter.data_source_type == 's3' -%}
+{%- if cookiecutter.data_source_type == 's3' %}
 	-aws s3 sync $(DATA_SOURCE) ./data/
-{% else if cookiecutter.data_source_type == 'nfs' %}
+{%- elif cookiecutter.data_source_type == 'nfs' %}
 	cp -r $(DATA_SOURCE)/* ./data/
-{% else if cookiecutter.data_source_type == 'url' %}
+{%- elif cookiecutter.data_source_type == 'url' %}
 	wget $(DATA_SOURCE) -P ./data/
-{%- endif %}
+{% endif %}
 
 init-docker: ## initialize docker image
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) .
@@ -90,7 +90,7 @@ profile: ## show profile of the project
 	@echo "CONTAINER_NAME: $(CONTAINER_NAME)"
 	@echo "IMAGE_NAME: $(IMAGE_NAME)"
 	@echo "JUPYTER_PORT: `$(DOCKER) port $(CONTAINER_NAME)`"
-	@echo "DATA: $(DATA)"
+	@echo "DATA_SOURE: $(DATA_SOURCE)"
 
 clean: clean-model clean-pyc clean-docker ## remove all artifacts
 
