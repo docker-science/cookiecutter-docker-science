@@ -61,7 +61,7 @@ Then the cookiecutter command ask for several questions on generated project as 
     1 - s3
     2 - nfs
     3 - url
-    data_source [Please Input data source in S3]: s3://research-data/food-images
+    data_source [Please Input data source]: s3://research-data/food-images
 
 Then you get the generated project directory, ``food-image-classification``.
 
