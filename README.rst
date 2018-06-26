@@ -57,7 +57,11 @@ Then the cookiecutter command ask for several questions on generated project as 
     project_slug [food_image_classification]:
     jupyter_host_port [8888]:
     description [Please Input a short description]: Classify food images into several categories
-    data_source [Please Input data source in S3]: s3://research-data/food-images
+    Select data_source_type:
+    1 - s3
+    2 - nfs
+    3 - url
+    data_source [Please Input data source]: s3://research-data/food-images
 
 Then you get the generated project directory, ``food-image-classification``.
 
@@ -105,7 +109,7 @@ Specifically `init` run `init-docker` and `init-data` command.
 
 - init-data
 
-  `init-data` downloads input files stored in S3. If you do not store the input files in S3, please modify the target to download the data source.
+  `init-data` downloads input files which we specified in the project generation.  If you want to change the input files, please modify this target to download the new data source.
 
 create-container
 ~~~~~~~~~~~~~~~~~
