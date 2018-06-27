@@ -66,7 +66,7 @@ init-data: ## download data
 {% endif %}
 
 init-docker: ## initialize docker image
-	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) .
+	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) --build-arg UID=$(shell id -u) .
 
 
 create-container: ## create docker container
