@@ -27,12 +27,12 @@ and keep the projects in continuous integration systems.
 Unfortunately running experiments in a Docker containers is troublesome. Adding a new library into ``requirements.txt``
 or ``Dockerfile`` does not installed as if local machine. We need to create Docker image and container each time.
 We also need to forward ports to see server responses such as Jupyter Notebook UI launch in Docker container in our local PC.
-``cookiecutter-docker-science`` provides utilities to make working in Docker container simple.
+Cookiecuttter Docker Science provides utilities to make working in Docker container simple.
 
 This project is a tiny template for machine learning projects developed in Docker environments.
 In machine learning tasks, projects glow uniquely to fit target tasks, but in the initial state,
 most directory structure and targets in `Makefile` are common.
-``cookiecutter-docker-science`` generate initial directories which fits simple machine learning tasks.
+Cookiecutter Docker Science generates initial directories which fits simple machine learning tasks.
 
 Requirements
 ------------
@@ -95,7 +95,7 @@ The following is the initial directory structure generated in the previous secti
 Makefile targets
 ----------------
 
-cookiecutter-docker-science provides many Makefile targets to supports experiments in a Docker container. Users can run the target with `make [TARGET]` command.
+Cookiecutter Docker Science provides many Makefile targets to supports experiments in a Docker container. Users can run the target with `make [TARGET]` command.
 
 init
 ~~~~~
@@ -210,9 +210,9 @@ Then you launch Jupyter Notebook in the Docker container, you can see the Jupyte
 Override Dockerfile setting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some project have multiple Dockerfile. One Dockerfile (`Dockerfile.gpu`) is contains the settings for GPU machines, other (`Dockerfile.cpu`) contains for settings for non gpu machines.
-For such situation, we can override the settings adding parameters to make command. For example, when we want to create a container from `docker/Dockerfile.cpu`,
-we run `make create-container DOCKERFILE=docker/Dockerfile.cpu`.
+Some project have multiple Dockerfile. One Dockerfile (``Dockerfile.gpu``) is contains the settings for GPU machines, other (`Dockerfile.cpu`) contains for settings for non gpu machines.
+For such situation, we can override the settings adding parameters to make command. For example, when we want to create a container from ``docker/Dockerfile.cpu``,
+we run ``make create-container DOCKERFILE=docker/Dockerfile.cpu``.
 
 License
 -------
