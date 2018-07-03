@@ -68,6 +68,14 @@ init-data: ## download data
 init-docker: ## initialize docker image
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) --build-arg UID=$(shell id -u) .
 
+sync_data: ## sync local data to data source
+{%- if cookiecutter.data_source_type == 's3' %}
+	-aws s3 sync $(DATA_SOURCE) ./data/
+{%- elif cookiecutter.data_source_type == 'nfs' %}
+	cp -r ./data/* $(DATA_SOURCE)/
+{%- elif cookiecutter.data_source_type == 'url' %}
+	echo "no sync target for url data source..."
+{% endif %}
 
 create-container: ## create docker container
 	$(DOCKER) run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME)
