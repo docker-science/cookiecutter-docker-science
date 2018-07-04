@@ -109,7 +109,7 @@ Specifically `init` run `init-docker` and `init-data` command.
 
 - init-data
 
-  `init-data` downloads input files which we specified in the project generation.  If you want to change the input files, please modify this target to download the new data source.
+  `init-data` (`sync-from-source`) downloads input files which we specified in the project generation.  If you want to change the input files, please modify this target to download the new data source.
 
 create-container
 ~~~~~~~~~~~~~~~~~
@@ -168,6 +168,12 @@ test
 ~~~~~
 
 `test` target executes tests.
+
+
+sync-to-source
+~~~~~~~~~~~~~~
+
+`sync-to-remote` target uploads the local files stored in `data` to specified data sources in such as S3 or NFS directories.
 
 Working in Docker container
 ----------------------------
