@@ -1,4 +1,4 @@
-.PHONY: clean clean-model clean-pyc docs help init init-data init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker clean-container clean-image sync-from-source sync-to-source
+.PHONY: clean clean-model clean-pyc docs help init init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker clean-container clean-image sync-from-source sync-to-source
 .DEFAULT_GOAL := help
 
 ###########################################################################################################
@@ -54,11 +54,9 @@ export DOCKERFILE=docker/Dockerfile
 help:
 	@$(PYTHON) -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-init: init-docker init-data ## initialize repository for traning
+init: init-docker sync-from-source ## initialize repository for traning
 
-sync-from-source: init-data ## download data source to local envrionment
-
-init-data: ## download data data source to local envrionment
+sync-from-source: ## download data data source to local envrionment
 {%- if cookiecutter.data_source_type == 's3' %}
 	-aws s3 sync $(DATA_SOURCE) ./data/
 {%- elif cookiecutter.data_source_type == 'nfs' %}
