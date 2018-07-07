@@ -46,6 +46,14 @@ When you check the code quality, please run `make lint`
 
 When you run test in `tests` directory, please run `make test`
 
+### Sync data source to local data directory
+
+When you want to download data in remote data sources such as S3 or NFS, `sync-from-remote` target downloads them.
+
+### Sync local data to remote source
+
+When you modify the data in local environment, `sync-to-remote` target uploads the local files stored in `data` to specified data sources such as S3 or NFS directories.
+
 ### Show profile of Docker container
 
 When you see the status of Docker container, please run `make profile` in host machine.
