@@ -1,4 +1,4 @@
-.PHONY: clean clean-model clean-pyc docs help init init-data init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker clean-container clean-image
+.PHONY: clean clean-model clean-pyc docs help init init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker clean-container clean-image sync-from-source sync-to-source
 .DEFAULT_GOAL := help
 
 ###########################################################################################################
@@ -54,9 +54,9 @@ export DOCKERFILE=docker/Dockerfile
 help:
 	@$(PYTHON) -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-init: init-docker init-data ## initialize repository for traning
+init: init-docker sync-from-source ## initialize repository for traning
 
-init-data: ## download data
+sync-from-source: ## download data data source to local envrionment
 {%- if cookiecutter.data_source_type == 's3' %}
 	-aws s3 sync $(DATA_SOURCE) ./data/
 {%- elif cookiecutter.data_source_type == 'nfs' %}
@@ -68,6 +68,14 @@ init-data: ## download data
 init-docker: ## initialize docker image
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) --build-arg UID=$(shell id -u) .
 
+sync-to-source: ## sync local data to data source
+{%- if cookiecutter.data_source_type == 's3' %}
+	-aws s3 sync ./data/ $(DATA_SOURCE)
+{%- elif cookiecutter.data_source_type == 'nfs' %}
+	cp -r ./data/* $(DATA_SOURCE)/
+{%- elif cookiecutter.data_source_type == 'url' %}
+	echo "no sync target for url data source..."
+{% endif %}
 
 create-container: ## create docker container
 	$(DOCKER) run -it -v $(PWD):/work -p $(JUPYTER_HOST_PORT):$(JUPYTER_CONTAINER_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME)

@@ -101,15 +101,15 @@ init
 ~~~~~
 
 After cootiecutter-docker-science generate the directories and files, users first run this command. `init` setups resources for experiments.
-Specifically `init` run `init-docker` and `init-data` command.
+Specifically `init` run `init-docker` and `sync-from-source` command.
 
 - init-docker
 
   `init-docker` command first creates Docker the images based on `docker/Dockerfile`.
 
-- init-data
+- sync-from-source
 
-  `init-data` downloads input files which we specified in the project generation.  If you want to change the input files, please modify this target to download the new data source.
+  `sync-from-source` downloads input files which we specified in the project generation.  If you want to change the input files, please modify this target to download the new data source.
 
 create-container
 ~~~~~~~~~~~~~~~~~
@@ -168,6 +168,12 @@ test
 ~~~~~
 
 `test` target executes tests.
+
+
+sync-to-source
+~~~~~~~~~~~~~~
+
+`sync-to-remote` target uploads the local files stored in `data` to specified data sources in such as S3 or NFS directories.
 
 Working in Docker container
 ----------------------------
