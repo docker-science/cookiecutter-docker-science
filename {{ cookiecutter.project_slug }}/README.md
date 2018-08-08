@@ -62,3 +62,7 @@ When you see the status of Docker container, please run `make profile` in host m
 
 To launch Jupyter Notebook, please run `make jupyter` in the Docker container. After launch the Jupyter Notebook, you can
 access the Jupyter Notebook service in http://localhost:{{ cookiecutter.jupyter_host_port }}.
+
+# Credits
+
+This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [cookiecutter-docker-science](https://docker-science.github.io/) project template.
