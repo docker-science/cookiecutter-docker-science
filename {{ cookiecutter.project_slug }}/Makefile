@@ -30,6 +30,7 @@ export DOCKER=nvidia-docker
 {% else %}
 export DOCKER=docker
 {%- endif %}
+export PWD=`pwd`
 export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
 export PYTHONPATH=$PYTHONPATH:$(PWD)
