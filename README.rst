@@ -175,16 +175,22 @@ sync-to-source
 
 `sync-to-remote` target uploads the local files stored in `data` to specified data sources in such as S3 or NFS directories.
 
-Working in Docker container
-----------------------------
+Working with Docker container
+------------------------------
+
+With Cookiecutter Docker Science, data scientists or software engineers do their developments in host environment.
+They open Jupyter notebook in the browsers in the host machine connecting the Jupyter server launched in Docker container.
+They also writes the ML scripts or library classes in the host machine. The code modification in host environment are
+reflected in the container environment. In the containers, they just launch Jupyter server or start ML scripts
+with make command.
 
 Files and directories
 ~~~~~~~~~~~~~~~~~~~~~
 
 When you log in a Docker container by ``make create-container`` or ``make start-container`` command, the log in directory is ``/work``.
 The directory contains the project top directories in host computer such as ``data`` or ``model``. Actually the Docker container mounts
-the project directory to ``/work`` of the container and therefore when you edit the files in the host environment with your favorite editor, the changes are
-reflected in the files in host environments.
+the project directory to ``/work`` of the container and therefore when you can edit the files in the host environment with your favorite editor
+such as Vim, Emacs, Atom or PyCharm. The changes in host environment are reflected in container environment.
 
 Jupyter Notebook
 ~~~~~~~~~~~~~~~~~
