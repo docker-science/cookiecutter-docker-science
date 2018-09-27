@@ -23,7 +23,7 @@ This section shows how we develop with the created Docker container.
 
 ### Edit source code
 
-Most of the source codes of project `{{ cookiecutter.project_name }}` are stored in the {{ cookiecutter.project_slug }} directory.
+Most of the source codes of this project, `{{ cookiecutter.project_name }}` are stored in the `{{ cookiecutter.project_slug }}` directory.
 Generated Docker container mounts the project directory to ``/work`` of the container and therefore
 when you can edit the files in the host environment with your favorite editor
 such as Vim, Emacs, Atom or PyCharm. The changes in host environment are reflected in the Docker container environment.
