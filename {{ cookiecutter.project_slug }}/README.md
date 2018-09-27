@@ -1,4 +1,4 @@
-# {{ cookiecutter.project_slug }}
+# {{ cookiecutter.project_name }}
 
 {{ cookiecutter.description }}
 
@@ -17,11 +17,18 @@ The above command creates a Docker container from the Docker image which we crea
 login to the Docker container. Now we made the development environment. For create and evaluate the model,
 you run the following command.
 
-## Usage
+## Development with Docker container
 
-This section shows the detailed usages.
+This section shows how we develop with the created Docker container.
 
-### Development
+### Edit source code
+
+Most of the source codes of project `{{ cookiecutter.project_name }}` are stored in the {{ cookiecutter.project_slug }} directory.
+Generated Docker container mounts the project directory to ``/work`` of the container and therefore
+when you can edit the files in the host environment with your favorite editor
+such as Vim, Emacs, Atom or PyCharm. The changes in host environment are reflected in the Docker container environment.
+
+### Update dependencies
 
 When we need to add libraries in `Dockerfile` or `requirements.txt`
 which are added to working environment in the Docker container, we need to drop the current Docker container and
