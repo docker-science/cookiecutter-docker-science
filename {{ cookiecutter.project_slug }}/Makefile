@@ -55,16 +55,8 @@ export DOCKERFILE=docker/Dockerfile
 help:
 	@$(PYTHON) -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-init: init-docker sync-from-source ## initialize repository for traning
+init: init-docker ## initialize repository for traning
 
-sync-from-source: ## download data data source to local envrionment
-{%- if cookiecutter.data_source_type == 's3' %}
-	-aws s3 sync $(DATA_SOURCE) ./data/
-{%- elif cookiecutter.data_source_type == 'nfs' %}
-	cp -r $(DATA_SOURCE)/* ./data/
-{%- elif cookiecutter.data_source_type == 'url' %}
-	wget $(DATA_SOURCE) -P ./data/
-{% endif %}
 
 init-docker: ## initialize docker image
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) --build-arg UID=$(shell id -u) .
@@ -111,11 +103,6 @@ clean-pyc: ## remove Python file artifacts
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
-
-distclean: clean clean-data ## remove all the reproducible resources including Docker images
-
-clean-data: ## remove files under data
-	rm -fr data/*
 
 clean-docker: clean-container clean-image ## remove Docker image and container
 
