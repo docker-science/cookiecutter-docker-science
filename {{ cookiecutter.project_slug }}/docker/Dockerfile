@@ -1,4 +1,4 @@
-{% if cookiecutter.choice_docker == '3' -%}
+{% if cookiecutter.choice_docker == 'nvidia' -%}
 FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 RUN apt-get update && apt-get install -y \
   git \
@@ -7,9 +7,9 @@ RUN apt-get update && apt-get install -y \
   python3-dev
 RUN pip3 install --upgrade pip
 
-{% elif cookiecutter.choice_docker == '1' -%}
+{% elif cookiecutter.choice_docker == 'anaconda3' -%}
 FROM continuumio/anaconda3
-{% elif cookiecutter.choice_docker == '2' -%}
+{% elif cookiecutter.choice_docker == 'miniconda3' -%}
 FROM continuumio/miniconda3
 {%- endif %}
 
