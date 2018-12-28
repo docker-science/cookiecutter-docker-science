@@ -9,6 +9,16 @@ Table of Contents
 .. contents:: This article consists of the following sections.
     :depth: 1
 
+Features
+--------
+
+Cookiecutter Docker Science provides the following features.
+
+* Support machine learning project running on a Docker container
+* Output optimal directories and file template for machine learning projects
+* Edit codes with favorite editors (Atom, vim, Emacs etc)
+* Provide targets useful for data analysis (Jupyter notebook, test, lint etc)
+
 Introduction
 ------------
 
