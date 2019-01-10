@@ -2,6 +2,10 @@
 
 {{ cookiecutter.description }}
 
+## Requirements
+
+* []Docker version 17 or later](https://docs.docker.com/install/#support)
+
 ## Setup development environment
 
 We setup the development environment in a Docker container with the following command.
