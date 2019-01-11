@@ -4,7 +4,7 @@
 
 ## Requirements
 
-* []Docker version 17 or later](https://docs.docker.com/install/#support)
+* [Docker version 17 or later](https://docs.docker.com/install/#support)
 
 ## Setup development environment
 
