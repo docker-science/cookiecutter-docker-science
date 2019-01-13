@@ -236,6 +236,21 @@ Some project have multiple Dockerfile. One Dockerfile (``Dockerfile.gpu``) is co
 For such situation, we can override the settings adding parameters to make command. For example, when we want to create a container from ``docker/Dockerfile.cpu``,
 we run ``make create-container DOCKERFILE=docker/Dockerfile.cpu``.
 
+
+Show target specific help
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`help` target flushes the details of specified target. For example, to get the details of `clean` target.
+
+```
+$make help TARGET=clean
+target: clean
+dependencies: clean-model clean-pyc clean-docker
+description: remove all artifacts
+```
+
+As we can see, the dependencies and description of the specified target (`clean`) are shown.
+
 License
 -------
 
