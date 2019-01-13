@@ -73,7 +73,7 @@ export DOCKERFILE=docker/Dockerfile
 ## GENERAL TARGETS
 ###########################################################################################################
 
-help:
+help: ## show this message
 	@$(PYTHON) -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 init: init-docker sync-from-source ## initialize repository for traning
