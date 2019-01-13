@@ -6,13 +6,33 @@
 ###########################################################################################################
 
 define PRINT_HELP_PYSCRIPT
-import re, sys
+import os, re, sys
 
-for line in sys.stdin:
+if os.environ['TARGET']:
+    target = os.environ['TARGET']
+    is_in_target = False
+    for line in sys.stdin:
+        match = re.match(r'^(?P<target>{}):(?P<dependencies>.*)?## (?P<description>.*)$$'.format(target).format(target), line)
+        if match:
+            print("target: %-20s" % (match.group("target")))
+            if "dependencies" in match.groupdict().keys():
+                print("dependencies: %-20s" % (match.group("dependencies")))
+            if "description" in match.groupdict().keys():
+                print("description: %-20s" % (match.group("description")))
+            is_in_target = True
+        elif is_in_target == True:
+            match = re.match(r'^\t(.+)', line)
+            if match:
+                command = match.groups()
+                print("command: %s" % (command))
+            else:
+                is_in_target = False
+else:
+    for line in sys.stdin:
         match = re.match(r'^([a-zA-Z_-]+):.*?## (.*)$$', line)
         if match:
-                target, help = match.groups()
-                print("%-20s %s" % (target, help))
+            target, help = match.groups()
+            print("%-20s %s" % (target, help))
 endef
 
 define START_DOCKER_CONTAINER
@@ -30,6 +50,7 @@ export DOCKER=nvidia-docker
 {% else %}
 export DOCKER=docker
 {%- endif %}
+export TARGET=
 export PWD=`pwd`
 export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
@@ -52,7 +73,7 @@ export DOCKERFILE=docker/Dockerfile
 ## GENERAL TARGETS
 ###########################################################################################################
 
-help:
+help: ## show this message
 	@$(PYTHON) -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 init: init-docker sync-from-source ## initialize repository for traning
