@@ -242,12 +242,12 @@ Show target specific help
 
 `help` target flushes the details of specified target. For example, to get the details of `clean` target.
 
-```
-$make help TARGET=clean
-target: clean
-dependencies: clean-model clean-pyc clean-docker
-description: remove all artifacts
-```
+:: 
+
+    $make help TARGET=clean
+    target: clean
+    dependencies: clean-model clean-pyc clean-docker
+    description: remove all artifacts
 
 As we can see, the dependencies and description of the specified target (`clean`) are shown.
 
