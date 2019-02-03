@@ -59,7 +59,7 @@ When you run test in `tests` directory, please run `make test`
 
 ### Sync data source to local data directory
 
-When you want to download data in remote data sources such as S3 or NFS, `sync-from-remote` target downloads them.
+When you want to download data in remote data sources such as Amazon S3 or NFS, `sync-from-remote` target downloads them.
 
 ### Sync local data to remote source
 
