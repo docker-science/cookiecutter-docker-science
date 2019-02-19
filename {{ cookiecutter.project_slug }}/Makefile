@@ -45,9 +45,9 @@ endef
 ## VARIABLES
 ###########################################################################################################
 
-{% if cookiecutter.use_nvidia_docker == 'yes' -%}
+{%- if cookiecutter.use_nvidia_docker == 'yes' %}
 export DOCKER=nvidia-docker
-{% else %}
+{%- else %}
 export DOCKER=docker
 {%- endif %}
 export TARGET=
