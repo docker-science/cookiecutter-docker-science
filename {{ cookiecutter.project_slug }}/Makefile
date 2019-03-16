@@ -65,7 +65,7 @@ export PYTHON=python3
 export DOCKERFILE=docker/Dockerfile
 
 ###########################################################################################################
-## ADD TARGETS FOR YOUR TASK
+## ADD TARGETS SPECIFIC TO "{{ cookiecutter.project_name }}"
 ###########################################################################################################
 
 
