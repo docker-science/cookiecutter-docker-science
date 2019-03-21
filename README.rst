@@ -47,7 +47,7 @@ Cookiecutter Docker Science generates initial directories which fits simple mach
 Requirements
 ------------
 
-* Python 2.7 or Python 3.5
+* Python 3.5 or later
 * `Cookiecutter 1.6 or later <https://cookiecutter.readthedocs.io/en/latest/installation.html>`_
 * `Docker version 17 or later <https://docs.docker.com/install/#support>`_
 
