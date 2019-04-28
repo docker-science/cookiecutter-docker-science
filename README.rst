@@ -16,7 +16,8 @@ Cookiecutter Docker Science provides the following features.
 
 * **Improve reproducibility** of the results in machine learning projects with **Docker**
 * Output optimal directories and file template for machine learning projects
-* Edit codes with favorite editors (Atom, vim, Emacs etc)
+* `Edit codes with favorite editors (Atom, vim, Emacs etc) <https://docker-science.github.io/#edit-codes-with-preferred-editors>`_
+
 * Provide `make` targets useful for data analysis (Jupyter notebook, test, lint, docker etc)
 
 Introduction
