@@ -23,7 +23,7 @@ Cookiecutter Docker Science provides the following features.
 Introduction
 ------------
 
-.. note:: please visit `home page <https://docker-science.github.io/>`_ before you get started.
+**NOTE**: please visit `home page <https://docker-science.github.io/>`_ before you get started.
 
 Many researchers and engineers do their machine learning or data mining experiments.
 For such data engineering tasks, researchers apply various tools and system libraries which are constantly
