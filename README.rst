@@ -12,7 +12,7 @@ Table of Contents
 Features
 --------
 
-Cookiecutter Docker Science provides the following features.
+ `Cookiecutter Docker Science <https://docker-science.github.io/>`_ provides the following features.
 
 * **Improve reproducibility** of the results in machine learning projects with **Docker**
 * Output optimal directories and file template for machine learning projects
