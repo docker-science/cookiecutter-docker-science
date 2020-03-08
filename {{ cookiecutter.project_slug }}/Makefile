@@ -56,13 +56,16 @@ export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
 export PYTHONPATH=$PYTHONPATH:$(PWD)
 export PROJECT_NAME={{ cookiecutter.project_slug }}
-export IMAGE_NAME=$(PROJECT_NAME)-image
-export CONTAINER_NAME=$(PROJECT_NAME)-container
+export MODE=dev ## dev or release
+export BASE_DOCKERFILE=docker/Dockerfile
+export DOCKERFILE=$(BASE_DOCKERFILE).$(MODE)
+export BASE_IMAGE_NAME=$(PROJECT_NAME)-image-base
+export IMAGE_NAME=$(PROJECT_NAME)-$(MODE)-image
+export CONTAINER_NAME=$(PROJECT_NAME)-$(MODE)-container
 export DATA_SOURCE={{ cookiecutter.data_source }}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
 export PYTHON=python3
-export DOCKERFILE=docker/Dockerfile
 
 ###########################################################################################################
 ## ADD TARGETS SPECIFIC TO "{{ cookiecutter.project_name }}"
@@ -88,10 +91,12 @@ sync-from-source: ## download data data source to local envrionment
 {% endif %}
 
 init-docker: ## initialize docker image
+	$(DOCKER) build -t $(BASE_IMAGE_NAME) -f $(BASE_DOCKERFILE) --build-arg UID=$(shell id -u) .
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) --build-arg UID=$(shell id -u) .
 
-init-docker-no-cache: ## initialize docker image without cachhe
-	$(DOCKER) build --no-cache -t $(IMAGE_NAME) -f $(DOCKERFILE) --build-arg UID=$(shell id -u) .
+init-docker-no-cache: ## initialize docker image without cache
+	$(DOCKER) build --no-cache -t $(BASE_IMAGE_NAME) -f $(BASE_DOCKERFILE) --build-arg UID=$(shell id -u) .
+	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) --build-arg UID=$(shell id -u) .
 
 sync-to-source: ## sync local data to data source
 {%- if cookiecutter.data_source_type == 's3' %}

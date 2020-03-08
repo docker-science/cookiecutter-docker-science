@@ -1,0 +1,4 @@
+jupyter
+notebook
+Sphinx
+flake8
