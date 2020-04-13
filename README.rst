@@ -38,7 +38,7 @@ and keep the projects in continuous integration systems.
 Unfortunately running experiments in a Docker containers is troublesome. Adding a new library into ``requirements.txt``
 or ``Dockerfile`` does not installed as if local machine. We need to create Docker image and container each time.
 We also need to forward ports to see server responses such as Jupyter Notebook UI launch in Docker container in our local PC.
-Cookiecuttter Docker Science provides utilities to make working in Docker container simple.
+Cookiecutter Docker Science provides utilities to make working in Docker container simple.
 
 This project is a tiny template for machine learning projects developed in Docker environments.
 In machine learning tasks, projects glow uniquely to fit target tasks, but in the initial state,
@@ -55,7 +55,7 @@ Requirements
 Quick start
 -----------
 
-To generate project from the cookiecutter-doccker-science template, please run the following command.
+To generate project from the cookiecutter-docker-science template, please run the following command.
 
 ``$cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git``
 
@@ -97,7 +97,7 @@ The following is the initial directory structure generated in the previous secti
     │   │                                    as project name. In this directory users puts python files used in scripts
     │   │                                    or Jupyter Notebook.
     │   └── __init__.py
-    ├── notebook                          <- This directory sotres the ipynb files saved in Jupyter Notebook.
+    ├── notebook                          <- This directory stores the ipynb files saved in Jupyter Notebook.
     ├── requirements.txt                  <- Libraries needed to run experiments. The library listed in this file
     │                                        are installed in the Docker container.
     └── scripts                           <- Users add the script files to generate model files or run evaluation.
@@ -111,7 +111,7 @@ Cookiecutter Docker Science provides many Makefile targets to supports experimen
 init
 ~~~~~
 
-After cootiecutter-docker-science generate the directories and files, users first run this command. `init` setups resources for experiments.
+After cookiecutter-docker-science generate the directories and files, users first run this command. `init` setups resources for experiments.
 Specifically `init` run `init-docker` and `sync-from-source` command.
 
 - init-docker
@@ -207,7 +207,7 @@ Jupyter Notebook
 ~~~~~~~~~~~~~~~~~
 
 We can run a Jupyter Notebook in the Docker container. The Jupyter Notebook uses the default port ``8888`` in **Docker container (NOT host machine)** and
-the port is forwarded to the one you specify with ``JUPYTER_HOST_PORT``  in the cootiecutter command. You can see the Jupyter Notebook UI accessing
+the port is forwarded to the one you specify with ``JUPYTER_HOST_PORT``  in the cookiecutter command. You can see the Jupyter Notebook UI accessing
 "http://localhost:JUPYTER_HOST_PORT". When you save notebooks the files are saved in the ``notebook`` directory.
 
 Tips
@@ -220,7 +220,7 @@ Override port number for Jupyter Notebook
 In the generation of project with cookiecutter, the default port of Jupyter Notebook in host is ``8888``. The number is common and could
 have a collision to another server processes.
 
-If we already have the container, we first need to remove the current container with ``make crean-container``. And then
+If we already have the container, we first need to remove the current container with ``make clean-container``. And then
 we create the Docker container changing the port number with ``make create-container`` command adding the Jupyter port parameter (JUPYTER_HOST_PORT).
 For example the following command creates Docker container forwarding Jupyter default port ``8888`` to ``9900`` in host.
 
@@ -233,7 +233,9 @@ Then you launch Jupyter Notebook in the Docker container, you can see the Jupyte
 Specify suitable Dockerfile in stages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some project have multiple Dockerfile. One Dockerfile (``Dockerfile.gpu``) is contains the settings for GPU machines, other (`Dockerfile.cpu`) contains for settings for non gpu machines for inference in produciton. In such situation, we can override the settings adding parameters to make command. For example, when we want to create a container from ``docker/Dockerfile.cpu``, we run ``make create-container DOCKERFILE=docker/Dockerfile.cpu``.
+Some projects can have multiple Dockerfiles. ``Dockerfile.gpu`` contains the settings for GPU machines. ``Dockerfile.cpu`` contains settings to be that can be used in production for non-GPU machines.
+
+To use one of these specific Dockerfile, override the settings by adding parameters to the make command. For example, when we want to create a container from ``docker/Dockerfile.cpu``, we run ``make create-container DOCKERFILE=docker/Dockerfile.cpu``.
 
 
 Show target specific help
