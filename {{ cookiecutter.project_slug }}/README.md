@@ -74,10 +74,9 @@ When you see the status of Docker container, please run `make profile` in host m
 To launch Jupyter Notebook, please run `make jupyter` in the Docker container. After launch the Jupyter Notebook, you can
 access the Jupyter Notebook service in http://localhost:{{ cookiecutter.jupyter_host_port }}.
 
-{{%- if cookiecutter.formatter_type != '' -%}}
 ### Run formatter
 When you format project's codes, please run `make format`.
-More details of {{ cookiecutter.formatter_type }} in {{%- if cookiecutter.formatter_type === 'black' -%}}https://github.com/psf/black {%- elif cookiecutter.formatter_type == 'autopep8' -%} https://github.com/hhatto/autopep8 {{%- elif cookiecutter.formatter_type === 'yapf' -%}}
+More details of {{ cookiecutter.formatter_type }} in {%- if cookiecutter.formatter_type == 'black' %}https://github.com/psf/black {%- elif cookiecutter.formatter_type == 'autopep8' %} https://github.com/hhatto/autopep8 {%- elif cookiecutter.formatter_type == 'yapf' %} https://github.com/google/yapf {% endif %}
 
 
 # Credits

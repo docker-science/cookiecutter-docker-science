@@ -152,13 +152,13 @@ clean-image: ## remove Docker image
 format:
 {%- if cookiecutter.formatter_type == 'black' %}
 	- black scripts
-	- black {{ cookiecutter.project_slug }}
+	- black $(PROJECT_NAME)
 {%- elif cookiecutter.formatter_type == 'autopep8' %}
 	- autopep8 --in-place --recursive scripts
-	- autopep8 --in-place --recursive {{ cookiecutter.project_slug }}
+	- autopep8 --in-place --recursive $(PROJECT_NAME)
 {%- elif cookiecutter.formatter_type == 'yapf' %}
 	- yapf --in-place --recursive scripts
-	- yapf --in-place --recursive {{ cookiecutter.project_slug }
+	- yapf --in-place --recursive $(PROJECT_NAME)
 {%- elif cookiecutter.formatter_type == '' %}
 	echo "Formatter is not set."
 {% endif %}

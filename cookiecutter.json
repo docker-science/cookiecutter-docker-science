@@ -5,5 +5,6 @@
     "description": "Please Input a short description",
     "data_source_type": ["s3", "nfs", "url"],
     "data_source": "Please Input data source",
-    "use_nvidia_docker": ["no", "yes"]
+    "use_nvidia_docker": ["no", "yes"],
+    "formatter_type": ["black", "autopep8", "yapf"]
 }
