@@ -18,3 +18,13 @@ run `make test` from root directory to check the updated template.
 
 [1]: https://github.com/docker-science/cookiecutter-docker-science/issues/new
 [2]: https://github.com/docker-science/cookiecutter-docker-science/compare
+
+
+## Target Users
+ - Basic knowledge of Docker environments
+    - relationship between Docker images and containers
+    - Docker container lifecycle
+    - create an execution environment from a single Dockerfile
+ - Experience with Makefile
+    - add commands to a Makefile.
+    - pass variables to a Makefile
