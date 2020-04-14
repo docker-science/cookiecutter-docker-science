@@ -148,3 +148,17 @@ clean-container: ## remove Docker container
 
 clean-image: ## remove Docker image
 	-$(DOCKER) image rm $(IMAGE_NAME)
+
+format:
+{%- if cookiecutter.formatter_type == 'black' %}
+	- black scripts
+	- black $(PROJECT_NAME)
+{%- elif cookiecutter.formatter_type == 'autopep8' %}
+	- autopep8 --in-place --recursive scripts
+	- autopep8 --in-place --recursive $(PROJECT_NAME)
+{%- elif cookiecutter.formatter_type == 'yapf' %}
+	- yapf --in-place --recursive scripts
+	- yapf --in-place --recursive $(PROJECT_NAME)
+{%- elif cookiecutter.formatter_type == '' %}
+	echo "Formatter is not set."
+{% endif %}
