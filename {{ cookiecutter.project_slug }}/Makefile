@@ -56,7 +56,7 @@ export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
 export PYTHONPATH=$PYTHONPATH:$(PWD)
 export PROJECT_NAME={{ cookiecutter.project_slug }}
-export MODE=dev ## dev or release
+export MODE=dev
 export BASE_DOCKERFILE=docker/Dockerfile
 export DOCKERFILE=$(BASE_DOCKERFILE).$(MODE)
 export BASE_IMAGE_NAME=$(PROJECT_NAME)-image-base

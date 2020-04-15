@@ -1,4 +1,4 @@
-FROM {{ cookiecutter.project_slug }}.base
+FROM {{cookiecutter.project_slug}}-image-base
 
 COPY . /work
 WORKDIR /work

@@ -1,4 +1,4 @@
-FROM {{ cookiecutter.project_slug }}.base
+FROM {{cookiecutter.project_slug}}-image-base
 
 COPY ./requirements_dev.txt /requirements_dev.txt
 RUN pip install -r /requirements_dev.txt
