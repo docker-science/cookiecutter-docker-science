@@ -1,0 +1,6 @@
+FROM {{cookiecutter.project_slug}}-image-base
+
+COPY . /work
+WORKDIR /work
+
+ENTRYPOINT ["/bin/bash"]
