@@ -90,11 +90,11 @@ The following is the initial directory structure generated in the previous secti
     │   └── jupyter_config.py
     ├── data                              <- data directory contains the input resources.
     ├── docker                            <- docker directory contains Dockerfile.
-    │   ├── Dockerfile                    <- Base Dockerfile cotanins the basic settings.
-    │   ├── Dockerfile.dev                <- Dockerfile for experiments this Docker image is devived from the base Docker image.
+    │   ├── Dockerfile                    <- Base Dockerfile contains the basic settings.
+    │   ├── Dockerfile.dev                <- Dockerfile for experiments this Docker image is derived from the base Docker image.
     │   │                                    This Docker image does not copy the files and directory but used mount the top
     │   │                                    directory of the host environments.
-    │   └── Dockerfile.release            <- Dockerfile for production this Docker image is devived from the base Docker image.
+    │   └── Dockerfile.release            <- Dockerfile for production this Docker image is derived from the base Docker image.
     │                                        The Docker image copy the files and directory under the project top directory.
     ├── model                             <- model directory store the model files created in the experiments.
     ├── my_data_science_project           <- cookie-cutter-docker-science creates the directory whose name is same
