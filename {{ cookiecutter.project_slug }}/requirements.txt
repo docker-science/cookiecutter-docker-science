@@ -1,8 +1,3 @@
 awscli
 click
-matplotlib
-jupyter
-notebook
-Sphinx
-flake8
 {{ cookiecutter.formatter_type }}
