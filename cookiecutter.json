@@ -2,9 +2,9 @@
     "project_name": "project_name",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "jupyter_host_port": "8888",
-    "description": "Please Input a short description",
-    "data_source_type": ["s3", "nfs", "url"],
-    "data_source": "Please Input data source",
+    "description": "Please input a short description",
+    "data_source_type": ["s3", "nfs", "url","None"],
+    "data_source": "{%- if cookiecutter.data_source_type != 'None' %}Input data source{%- else %}No data source, press enter{% endif %}",
     "use_nvidia_docker": ["no", "yes"],
     "formatter_type": ["black", "autopep8", "yapf"]
 }

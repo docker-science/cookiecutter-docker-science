@@ -1,4 +1,8 @@
+{%- if cookiecutter.data_source_type != 'None' %}
 .PHONY: clean clean-model clean-pyc docs help init init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker clean-container clean-image sync-from-source sync-to-source
+{%- else %}
+.PHONY: clean clean-model clean-pyc docs help init init-docker create-container start-container jupyter test lint profile clean clean-data clean-docker clean-container clean-image
+{%- endif %}
 .DEFAULT_GOAL := help
 
 ###########################################################################################################
@@ -62,7 +66,9 @@ export DOCKERFILE=$(BASE_DOCKERFILE).$(MODE)
 export BASE_IMAGE_NAME=$(PROJECT_NAME)-image-base
 export IMAGE_NAME=$(PROJECT_NAME)-$(MODE)-image
 export CONTAINER_NAME=$(PROJECT_NAME)-$(MODE)-container
+{%- if cookiecutter.data_source_type != 'None' %}
 export DATA_SOURCE={{ cookiecutter.data_source }}
+{% endif %}
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=8888
 export PYTHON=python3
@@ -79,14 +85,20 @@ export PYTHON=python3
 help: ## show this message
 	@$(PYTHON) -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-init: init-docker sync-from-source ## initialize repository for traning
+{%- if cookiecutter.data_source_type != 'None' %}
+init: init-docker sync-from-source ## initialize repository for training
+{%- else %}
+init: init-docker ## initialize repository for training
+{% endif %}
 
-sync-from-source: ## download data data source to local envrionment
 {%- if cookiecutter.data_source_type == 's3' %}
+sync-from-source: ## download data data source to local envrionment
 	-aws s3 sync $(DATA_SOURCE) ./data/
 {%- elif cookiecutter.data_source_type == 'nfs' %}
+sync-from-source: ## download data data source to local envrionment
 	cp -r $(DATA_SOURCE)/* ./data/
 {%- elif cookiecutter.data_source_type == 'url' %}
+sync-from-source: ## download data data source to local envrionment
 	wget $(DATA_SOURCE) -P ./data/
 {% endif %}
 
@@ -98,12 +110,15 @@ init-docker-no-cache: ## initialize docker image without cache
 	$(DOCKER) build --no-cache -t $(BASE_IMAGE_NAME) -f $(BASE_DOCKERFILE) --build-arg UID=$(shell id -u) .
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) .
 
-sync-to-source: ## sync local data to data source
+
 {%- if cookiecutter.data_source_type == 's3' %}
+sync-to-source: ## sync local data to data source
 	-aws s3 sync ./data/ $(DATA_SOURCE)
 {%- elif cookiecutter.data_source_type == 'nfs' %}
+sync-to-source: ## sync local data to data source
 	cp -r ./data/* $(DATA_SOURCE)/
 {%- elif cookiecutter.data_source_type == 'url' %}
+sync-to-source: ## sync local data to data source
 	echo "no sync target for url data source..."
 {% endif %}
 
