@@ -3,3 +3,4 @@ jupyter
 notebook
 Sphinx
 flake8
+mypy
