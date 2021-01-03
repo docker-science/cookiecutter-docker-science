@@ -123,6 +123,7 @@ test: ## run test cases in tests directory
 
 lint: ## check style with flake8
 	flake8 {{ cookiecutter.project_slug }}
+	mypy {{ cookiecutter.project_slug }}
 
 profile: ## show profile of the project
 	@echo "CONTAINER_NAME: $(CONTAINER_NAME)"
