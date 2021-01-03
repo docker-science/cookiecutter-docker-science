@@ -102,8 +102,10 @@ The following is the initial directory structure generated in the previous secti
     │   │                                    or Jupyter Notebook.
     │   └── __init__.py
     ├── notebook                          <- This directory stores the ipynb files saved in Jupyter Notebook.
-    ├── requirements.txt                  <- Libraries needed to run experiments. The library listed in this file
-    │                                        are installed in the Docker container.
+    ├── requirements.txt                  <- Libraries needed in the project. The library listed in this file
+    │                                        are installed in the Docker images for not only development but also production.
+    ├── requirements_dev.txt              <- Libraries needed to run experiments. The library listed in this file
+    │                                        are installed in the Docker images for developments.
     └── scripts                           <- Users add the script files to generate model files or run evaluation.
 
 
@@ -217,6 +219,14 @@ the port is forwarded to the one you specify with ``JUPYTER_HOST_PORT``  in the 
 Tips
 -----
 
+Generate Docker Image for production
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`make init-docker` command creates Docker the images based on `docker/Dockerfile.dev`, which contain
+libraries for developments. The libraries are not needed in production.
+
+To create Docker images for production which do not contains development
+libraries such as Jupyter, we run `make init-docker` command specifying a environment variable `MODE` to `release` as `make init-docker MODE=release`.
 
 Override port number for Jupyter Notebook
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
