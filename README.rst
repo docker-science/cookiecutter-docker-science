@@ -222,10 +222,10 @@ Tips
 Generate Docker Image for production
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`make init-docker` command creates Docker the images based on `docker/Dockerfile.dev`, which contain
+`make init-docker` command creates a Docker image based on `docker/Dockerfile.dev`, which contains
 libraries for developments. The libraries are not needed in production.
 
-To create Docker images for production which do not contains development
+To create a Docker image for production which does not contain the development
 libraries such as Jupyter, we run `make init-docker` command specifying a environment variable `MODE` to `release` as `make init-docker MODE=release`.
 
 Override port number for Jupyter Notebook
