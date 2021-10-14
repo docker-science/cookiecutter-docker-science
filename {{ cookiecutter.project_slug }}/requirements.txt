@@ -1,3 +1,8 @@
 awscli
 click
 {{ cookiecutter.formatter_type }}
+tensorflow==2.3.4
+scikit-learn
+opencv-python
+opencv-contrib-python
+pandas

@@ -4,3 +4,5 @@ notebook
 Sphinx
 flake8
 mypy
+pytest>=3
+tqdm
